@@ -236,7 +236,6 @@ input[type="submit"].delete:hover {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
 }
 .form-display input, textarea {
-    display: block;
     position: relative;
     background: white;
     padding: 8px 0 8px 0;

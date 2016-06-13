@@ -20,7 +20,6 @@ echo 'Connection failed: ' . $e->getMessage();
 
     $stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
     $stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-
     $stmt->execute();
     }
 

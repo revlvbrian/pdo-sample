@@ -11,14 +11,15 @@ echo 'Connection failed: ' . $e->getMessage();
 }
 
 if(isset($_POST['update'])){
-$sql = "UPDATE List SET
-            title = :updatetitle,
-            description = :updatedesc
+    $sql = "UPDATE List
+            SET id = :id,
+                title = :title,
+                description = :description
             WHERE id = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(':title', $_POST['updatetitle'], PDO::PARAM_STR);
-$stmt->bindParam(':description', $_POST['updatedesc'], PDO::PARAM_STR);
-$stmt->execute();
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(":id" => $_POST['updateid'],
+                    ":title" => $_POST['updatetitle'],
+                    ":description" => $_POST['updatedesc']));
 }
 
 if(isset($_POST['delete'])){
@@ -26,14 +27,6 @@ if(isset($_POST['delete'])){
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $_POST['updateid'], PDO::PARAM_INT);
     $stmt->execute();
-    if ($pdo->prepare($sql) === TRUE)
-    {
-    echo "Record deleted successfully";
-    }
-    else
-    {
-    echo "Error deleting record: " . $pdo->error;
-    }
 }
 
 header('Location: index.php');
